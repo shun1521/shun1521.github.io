@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>My Homepage</title>
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE9.js"></script>
+<![endif]-->
+<link href="css/style.css" rel="stylesheet" media="all">
+</head>
+<body>
+<div id="container">
+  <header id="header">
+    <h1>My Homepage</h1>
+  </header>
+  <div id="nav_frame">
+    <nav>
+      <ul id="nav1">
+        <li><a href="index-e.html">Home</a></li>
+       <li><a href="template-e.html">Introductionn</a></li>
+        <li><a href="research-e.html">Research</a></li>
+        <li><a href="publications-e.html">Publications</a></li>
+        <li><a href="index.html">Japanese</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div id="main">
+    <h1>RESEARCH</h1>
+    <div id="main2">
+      
+      <h2>Detecton of phase trannsicion via Neural Network</h2>
+      <p>
+        Neural network is the technique of machine learning imitating the human brain.
+        This technique enables you to create a machine that hits dogs or cats as output by giving input images of dogs and cats.
+        In this paper, we show that we can detect phase transformation without prior knowledge of quantum phase transition of 1D transverse magnetic Ising model.
+        The transverse field Ising model is based on quantum annealing.
+
+        In general, since there is no thermal fluctuation in case of cryogenic temperature, spins are observed to be directed upward all the way upward and downward if downward,
+         but by adding a transverse magnetic field which causes quantum fluctuation, how many spins we can introduce quantum fluctuation which becomes disagreeable even by observation.
+         When the transverse magnetic field is gradually decreased, the spins are steadily aligned from the disaggregated state and the phase transition develops. Such a phase transition caused by quantum fluctuation is called quantum phase transition.
+
+        So let's briefly describe how to detect quantum phase transition using neural network.
+
+        In order to learn neural network, it is necessary to first prepare a large number of data of spin states. It is necessary to prepare a data set whose output is  the strength of quantum fluctuation.
+
+        However, if it is extreme, that is enough.
+
+        The problem is how to construct a data set introducing quantum fluctuation.
+
+         Fortunately, the quantum fluctuation due to the transverse magnetic field which is standardly used in quantum annealing can be simulated by our computer resources.
+
+         We can sample the state of spin in a certain transverse magnetic field using a technique called quantum Monte Carlo method.
+
+         In this study, we first conducted an empirical study using quantum Monte Carlo method.
+
+        Also, T - QARD can use D - Wave Machine 's D - Wave machine. Standard quantum annealing with transverse magnetic field can be performed in this machine.
+
+        We are doing the same simulation by using that data. We will analyze the phase transition occurring on D - Wave and introduce it along with publication of the paper.
+    <a href="http://journals.jps.jp/doi/pdf/10.7566/JPSJ.87.033001">This is my paper</a>.  <a href="http://qard.is.tohoku.ac.jp/2018030239/">This is an explanation of T-QARD</a>  </p>
+      <h2>Quantum Annealing with non-stoquastic Hamiltonian</h2>
+      <p>
+         It is possible to accelerate quantum annealing by introducing quantum fluctuation other than the transverse magnetic field.
+         An example of that is  anti-ferromagnetic XX interaction.
+         It is difficult to directly simulate this quantum fluctuation on a classical computer by quantum Monte Carlo method because a negative sign problem arises.
+         However, by using adaptive quantum Monte Carlo method, it is known that quantum fluctuation other than transverse magnetic field can be simulated.
+         Using this method, we are analyzing what kind of problems will enable quantum acceleration. </p>
+           <h2>Non-negative matrix factorization by utilizing D-Wave</h2>
+           <p>It is an applied research applying quantum annealing to machine learning. The matrix V is decomposed into the pattern matrix W and matrix H of whether it comes out or not.
+             In this problem, the pattern matrix W is calculated by CPU and the matrix H is binary values obtained by D-Wave.</p>
+
+
+    </div>
+  </div>
+</div>
+<footer>
+  <div id="footer_color">
+    <div id="copy">Copyright &copy; Cis-trans, Inc. All rights reserved.</div>
+  </div>
+</footer>
+</body>
+</html>
