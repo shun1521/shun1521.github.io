@@ -14,6 +14,7 @@ body {
 	text-align: center;
 	background-image: url(../image/back1h.png);
 	background-repeat: repeat-x;
+	background: #dcdcdc;
 }
 
 
@@ -25,7 +26,7 @@ body {
 }
 
 a:link {
-	color: #0129BC;
+	color: #87cefa;
 }
 
 a:visited {
@@ -37,7 +38,7 @@ a:active {
 }
 
 a:hover {
-	color: #139DFF;
+	color: #add8e6;
 }
 
 
@@ -57,7 +58,7 @@ header h1 {
 	margin: 0;
 	font-size: 25px;
 	font-weight: normal;
-	color: #FFFFFF;
+	color: #87cefa;
 	font-weight: bold;
 }
 
@@ -104,13 +105,13 @@ ul#nav1 a:link, ul#nav1 a:visited {
 	text-decoration: none;
 	display: block;
 	list-style: none;
-	color: #092795;
-	border: 1px solid #092795;
-	background-color: #FFF;
+	color: #FFF;
+	border: 1px solid #87cefa;
+	background-color: #87cefa;
 }
 
 ul#nav1 a:active, ul#nav1 a:hover {
-	color: #FFF;
+	color: #add8e6;
 	border: 1px solid #139DFF;
 	background-color: #139DFF;
 }
@@ -140,15 +141,15 @@ ul#nav1 li a:after {
     width: 6px;
     height: 6px;
     margin-top: -4px;
-    background: #FFF;
+    background: #add8e6;
 }
 
 ul#nav1 li a:hover:before {
-    background: #FFF;
+    background: #add8e6;
 }
 
 ul#nav1 li a:hover:after {
-    background: #139DFF;
+    background: #add8e6;
 }
 
 #link {
@@ -162,8 +163,8 @@ ul#nav1 li a:hover:after {
 	margin: 0;
 	padding: 7px 3px 0;
 	text-indent: 0;
-	color: #0237C1;
-	border-top: 4px solid #0129BC;
+	color: #87cefa;
+	border-top: 4px solid #87cefa;
 	font-size: 15px;
 }
 
@@ -178,7 +179,7 @@ ul#nav2 li {
 	padding: 2px 0 2px;
 	background-image: none;
 	list-style: none;
-	color: #0129BC;
+	color: #87cefa;
 	list-style-image: none;
 }
 
@@ -190,11 +191,12 @@ footer {
 	height: 56px;
 	margin: 0 auto;
 	padding: 0 auto;
-	font-size: 12px;
+	font-size: 15px;
 	color: #FFF;
 	clear: both;
 	background-image: url(../image/back1f.png);
 	background-repeat: repeat-x;
+	background:#87cefa
 }
 
 #footer_color {
@@ -289,19 +291,19 @@ footer {
 	line-height: 24px;
 	font-size: 24px;
 	font-weight: bold;
-	background-color: #0A2A81;
+	background-color: #87cefa;
 }
 
 h2 {
 	width: 740px;
 	height: 22px;
-	color: #139DFF;
+	color: #87cefa;
 	font-size: 22px;
 	font-weight: normal;
 	margin: 30px auto 10px;
 	padding: 8px 5px 0;
 	line-height: 22px;
-	border-top: 5px solid #139DFF;
+	border-top: 5px solid #87cefa;
 	clear: both;
 }
 
@@ -407,7 +409,7 @@ table.noborder th {
 	padding: 5px;
 	font-weight: normal;
 	text-align: center;
-	background-color: #F2F2F2;
+	background-color: #87cefa;
 	border: none;
 }
 
