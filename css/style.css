@@ -551,3 +551,6 @@ blockquote {
 blockquote p {
 	text-indent: 0;
 }
+@media screen and[max-width:480px]{
+	p{font-size:15px;}
+}
