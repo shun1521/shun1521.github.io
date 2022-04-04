@@ -67,6 +67,13 @@ input, select, textarea {
 body {
   -ms-overflow-style: scrollbar; }
 
+.location-map{
+  padding: 10% 5%;
+}
+iframe{
+  width:100%;
+  height:100%;
+}
 @media screen and (max-width: 480px) {
   html, body {
     min-width: 320px; } }
@@ -93,7 +100,7 @@ body {
 body, input, select, textarea {
   color: #7f888f;
   font-family: "Open Sans", sans-serif;
-  font-size: 13pt;
+  font-size: 15pt;
   font-weight: 400;
   line-height: 1.65; }
   @media screen and (max-width: 1680px) {
@@ -217,6 +224,7 @@ hr {
   margin: 2em 0; }
   hr.major {
     margin: 3em 0; }
+
 
 .align-left {
   text-align: left; }
