@@ -1,112 +1,947 @@
-<!DOCTYPE HTML>
-<!--
-	Editorial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Shunta Arai's Homepage</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>荒井 俊太 (Shunta Arai) - Portfolio</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Noto Sans JP', sans-serif; }
+        .nav-link.active {
+            color: #3b82f6; /* blue-500 */
+            border-bottom: 2px solid #3b82f6;
+        }
+        .mobile-nav-link.active {
+            background-color: #f1f5f9; /* slate-100 */
+            color: #3b82f6; /* blue-500 */
+            border-left: 4px solid #3b82f6;
+        }
+        .section-enter {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased flex flex-col min-h-screen">
 
-		<!-- Wrapper -->
-			<div id="wrapper">
+    <!-- Header Navigation -->
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo / Name -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="showSection('home', document.getElementById('nav-home'))">
+                    <div class="w-8 h-8 bg-slate-200 rounded-full flex items-center justify-center text-slate-500 mr-3">
+                        <i class="fas fa-user text-sm"></i>
+                    </div>
+                    <span class="font-bold text-lg md:text-xl text-slate-900 tracking-tight">荒井 俊太</span>
+                    <span class="ml-2 text-sm text-slate-500 hidden sm:block">Shunta Arai</span>
+                </div>
 
-				<!-- Main -->
-					<div id="main">
-						<div class="inner">
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex space-x-8 items-center h-full">
+                    <button id="nav-home" onclick="showSection('home', this)" class="nav-link active h-full px-1 flex items-center text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors border-b-2 border-transparent">
+                        ホーム
+                    </button>
+                    <button id="nav-profile" onclick="showSection('profile', this)" class="nav-link h-full px-1 flex items-center text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors border-b-2 border-transparent">
+                        プロフィール
+                    </button>
+                    <button id="nav-publications" onclick="showSection('publications', this)" class="nav-link h-full px-1 flex items-center text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors border-b-2 border-transparent">
+                        研究業績
+                    </button>
+                    
+                    <!-- Social Links -->
+                    <div class="flex items-center space-x-4 ml-6 pl-6 border-l border-slate-200">
+                        <a href="https://github.com/shun1521" target="_blank" class="text-slate-400 hover:text-slate-900 transition-colors">
+                            <i class="fab fa-github text-lg"></i>
+                        </a>
+                        <a href="https://scholar.google.com/citations?user=cZlplgEAAAAJ&hl=en" target="_blank" class="text-slate-400 hover:text-blue-600 transition-colors">
+                            <i class="fas fa-graduation-cap text-lg"></i>
+                        </a>
+                        <a href="https://www.facebook.com/shunta.arai.54" target="_blank" class="text-slate-400 hover:text-blue-600 transition-colors">
+                            <i class="fab fa-facebook text-lg"></i>
+                        </a>
+                    </div>
+                </nav>
 
-							<!-- Header -->
-								<header id="header">
-									<a href="index.html" class="logo"><strong>Shunta Arai's</strong>Homepage</a>
-									<ul class="icons">
-										<li><a href="https://www.facebook.com/shunta.arai.54" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-										<li><a href="https://github.com/shun1521" class="icon brands fa-github"><span class="label">Github</span></a></li>
-											<!-- <li><a href="" class="icon brands fa-Linkedin"><span class="label">Linkedin</span></a></li>
-										<li><a href="" class="icon brands fa-instagram"><span class="label">instagram</span></a></li>-->
-									</ul>
-								</header>
+                <!-- Mobile menu button -->
+                <div class="flex items-center md:hidden">
+                    <button id="mobile-menu-btn" class="text-slate-500 hover:text-slate-900 focus:outline-none p-2" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
 
-							<!-- Banner -->
-								<section id="banner">
-									<div class="content">
-										<span class="image object">
-											<img src="images/top1.JPG" alt="" />
-												</span>
-									</div>
-								</section>
-								<section>
-										<h3>このホームページは東京科学大学　情報理工学院　数理・計算科学系　高邉研究室 助教の荒井俊太のホームページです。</h3>
-										<div id="news">
-											<h3 class="top">・NEWS &amp; TOPICS</h3>
-											</div>
-									<header class="major">
-							<!--			<li><a href="https://www.amazon.co.jp/%E9%87%8F%E5%AD%90%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF%E3%81%AB%E3%82%88%E3%82%8B%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92-Maria-Schuld/dp/4320124626/ref=sr_1_12?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&dchild=1&keywords=%E9%87%8F%E5%AD%90%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF&qid=1598972084&s=books&sr=1-12">量子コンピュータによる機械学習</a>という翻訳本を出しました.(7,8,9章担当)</li>-->
-								</section>
+        <!-- Mobile Menu (Dropdown) -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-slate-100 shadow-lg absolute w-full left-0 top-16">
+            <div class="px-2 pt-2 pb-4 space-y-1">
+                <button onclick="showSection('home', this, true)" class="mobile-nav-link active block w-full text-left px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50 border-l-4 border-transparent">
+                    <i class="fas fa-home w-6 text-center text-slate-400 mr-2"></i> ホーム
+                </button>
+                <button onclick="showSection('profile', this, true)" class="mobile-nav-link block w-full text-left px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50 border-l-4 border-transparent">
+                    <i class="fas fa-id-card w-6 text-center text-slate-400 mr-2"></i> プロフィール
+                </button>
+                <button onclick="showSection('publications', this, true)" class="mobile-nav-link block w-full text-left px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50 border-l-4 border-transparent">
+                    <i class="fas fa-book w-6 text-center text-slate-400 mr-2"></i> 研究業績
+                </button>
+                
+                <div class="mt-4 pt-4 border-t border-slate-100 flex justify-center space-x-6">
+                    <a href="https://github.com/shun1521" target="_blank" class="text-slate-400 hover:text-slate-900 text-xl">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://scholar.google.com/citations?user=cZlplgEAAAAJ&hl=en" target="_blank" class="text-slate-400 hover:text-blue-600 text-xl">
+                        <i class="fas fa-graduation-cap"></i>
+                    </a>
+                    <a href="https://www.facebook.com/shunta.arai.54" target="_blank" class="text-slate-400 hover:text-blue-600 text-xl">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
 
-						</div>
-					</div>
+    <!-- Main Content Area -->
+    <main class="flex-grow max-w-4xl mx-auto w-full p-6 md:p-12">
 
-				<!-- Sidebar -->
-					<div id="sidebar">
-						<div class="inner">
+        <!-- HOME SECTION -->
+        <section id="home" class="content-section block section-enter">
+            <div class="bg-gradient-to-br from-blue-900 to-slate-800 rounded-2xl p-8 md:p-12 text-white shadow-xl mb-12 relative overflow-hidden">
+                <div class="absolute top-0 right-0 -mt-10 -mr-10 text-blue-500 opacity-20">
+                    <i class="fas fa-network-wired text-9xl"></i>
+                </div>
+                <div class="relative z-10">
+                    <h1 class="text-3xl md:text-5xl font-bold mb-4 tracking-tight">Shunta Arai</h1>
+                    <p class="text-lg md:text-xl text-blue-100 font-light mb-6 leading-relaxed">
+                        東京科学大学 情報理工学院 数理・計算科学系<br class="hidden md:block">
+                        高邉研究室 助教
+                    </p>
+                    <div class="inline-flex items-center px-4 py-2 bg-white/10 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20">
+                        <i class="fas fa-envelope mr-2"></i> arai.s.ba03 [at] m.isct.ac.jp
+                    </div>
+                </div>
+            </div>
 
+            <h2 class="text-2xl font-bold text-slate-800 mb-6 pb-2 border-b-2 border-slate-200">News & Topics</h2>
+            <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-6 space-y-4">
+                <div class="flex flex-col md:flex-row md:items-start gap-4 pb-4 border-b border-slate-50 last:border-0">
+                    <span class="text-sm font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-md self-start shrink-0">2026.02</span>
+                    <p class="text-slate-600">「量子アニーリング及び関連技術の基礎から社会実装まで」にて「デジタルアナログ量子計算を用いたグローバー適応探索」の発表を行いました。</p>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-start gap-4 pb-4 border-b border-slate-50 last:border-0">
+                    <span class="text-sm font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-md self-start shrink-0">2025.09</span>
+                    <p class="text-slate-600">日本物理学会（広島大学）にて発表を行いました。</p>
+                </div>
+                <div class="flex flex-col md:flex-row md:items-start gap-4">
+                    <span class="text-sm font-bold text-blue-600 bg-blue-50 px-3 py-1 rounded-md self-start shrink-0">2025.01</span>
+                    <p class="text-slate-600">論文 "Transfer Learning for Deep-Unfolded Combinatorial Optimization Solver with Quantum Annealer" がプレプリント(arXiv)に公開されました。</p>
+                </div>
+            </div>
+        </section>
 
-							<!-- Header -->
-										<div id="header">
-											<div class="top">
-													<div id="logo">
-														<h2>荒井 俊太 (Shunta Arai)</h2>
-														<p></p>
-													</div>
-							<!-- Menu -->
-								<nav id="menu">
-									<header class="major">
-										<h2>Menu</h2>
-									</header>
-									<ul>
-										<li><a href="index.html"><span class="icon solid fa-home">トップ</span></span></a></li>
-										<li><a href="generic.html"><span class="icon solid fa-user">プロフィール</span></a></li>
-										<li><a href="research.html"><span class="icon solid fa-paper-plane">研究内容</span></a></li>
-										<li><a href="publications.html"><span class="icon solid fa-signal">研究業績</span></a></li>
-									<li><a href="index-e.html">English</a></li>
-									</ul>
-								</nav>
+        <!-- PROFILE SECTION -->
+        <section id="profile" class="content-section hidden">
+            <h2 class="text-3xl font-bold text-slate-800 mb-8 pb-2 border-b-2 border-slate-200">プロフィール</h2>
 
-								<!-- Section -->
-									<section>
-										<header class="major">
-											<h2>Link</h2>
-										</header>
-										<div class="mini-posts">
-											<li><a href="https://isp.c.titech.ac.jp/">高邉研究室</a></li><p>
-											<li><a href="https://www.qcomp.irfi.titech.ac.jp/">量子コンピューティング研究拠点</a></li><p>
-											<li><a href="https://www.isct.ac.jp/ja">東京科学大学</a></li><p>
-											<li><a href="http://www.smapip.is.tohoku.ac.jp/index.html">田中研究室</a></li><p>
-											<li><a href="https://altema.is.tohoku.ac.jp/">大関研究室</a></li><p>
-											<li><a href="https://www.is.tohoku.ac.jp/">東北大学大学院情報科学研究科</a></li><p>
-											<li><a href="http://www.jps.or.jp/">日本物理学会</a></li><p>
-											<li><a href="https://scholar.google.com/citations?user=cZlplgEAAAAJ&hl=en">Google Scholor</a></li><p>
-										</div>
-									</section>
+            <!-- 基本情報 -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-6 md:p-8 mb-8">
+                <h3 class="text-xl font-bold text-slate-800 mb-6 flex items-center"><i class="fas fa-user-circle text-blue-500 mr-2"></i> 基本情報</h3>
+                <ul class="space-y-4 text-slate-600 text-sm md:text-base">
+                    <li class="flex flex-col md:flex-row"><span class="w-32 font-semibold text-slate-500 shrink-0">名前:</span> 荒井 俊太 (Shunta Arai)</li>
+                    <li class="flex flex-col md:flex-row"><span class="w-32 font-semibold text-slate-500 shrink-0">生年:</span> 1994年</li>
+                    <li class="flex flex-col md:flex-row"><span class="w-32 font-semibold text-slate-500 shrink-0">性別:</span> 男</li>
+                    <li class="flex flex-col md:flex-row"><span class="w-32 font-semibold text-slate-500 shrink-0">所属:</span> 東京科学大学 情報理工学院 数理・計算科学系 高邉研究室</li>
+                    <li class="flex flex-col md:flex-row"><span class="w-32 font-semibold text-slate-500 shrink-0">連絡先:</span> arai.s.ba03 [at] m.isct.ac.jp</li>
+                    <li class="flex flex-col md:flex-row"><span class="w-32 font-semibold text-slate-500 shrink-0">所属学会:</span> 日本物理学会</li>
+                    <li class="flex flex-col md:flex-row items-start md:items-center mt-2 pt-4 border-t border-slate-100">
+                        <span class="w-32 font-semibold text-slate-500 shrink-0 mb-2 md:mb-0">使える言語:</span> 
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-slate-100 px-3 py-1 rounded text-xs border border-slate-200 text-slate-700">Python</span>
+                            <span class="bg-slate-100 px-3 py-1 rounded text-xs border border-slate-200 text-slate-700">C++</span>
+                            <span class="bg-slate-100 px-3 py-1 rounded text-xs border border-slate-200 text-slate-700">C</span>
+                            <span class="bg-slate-100 px-3 py-1 rounded text-xs border border-slate-200 text-slate-700">LaTeX</span>
+                            <span class="bg-slate-100 px-3 py-1 rounded text-xs border border-slate-200 text-slate-700">HTML</span>
+                            <span class="bg-slate-100 px-3 py-1 rounded text-xs border border-slate-200 text-slate-700">Javascript</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
 
-								<!-- Section -->
-								<footer id="footer">
-										<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-								</footer>
+            <!-- 学歴・職歴 -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-6 md:p-8 mb-8">
+                <h3 class="text-xl font-bold text-slate-800 mb-6 flex items-center"><i class="fas fa-history text-blue-500 mr-2"></i> 学歴・職歴</h3>
+                <ul class="space-y-4 text-sm md:text-base text-slate-600">
+                    <li class="flex flex-col md:flex-row md:items-start border-b border-slate-50 pb-3"><span class="w-40 font-bold text-slate-700 shrink-0 mb-1 md:mb-0">2013/3/31</span><span>宮城県仙台第二高等学校 卒業</span></li>
+                    <li class="flex flex-col md:flex-row md:items-start border-b border-slate-50 pb-3"><span class="w-40 font-bold text-slate-700 shrink-0 mb-1 md:mb-0">2013/4/1</span><span>東北大学 工学部 情報知能システム総合学科 入学</span></li>
+                    <li class="flex flex-col md:flex-row md:items-start border-b border-slate-50 pb-3"><span class="w-40 font-bold text-slate-700 shrink-0 mb-1 md:mb-0">2016/4/1</span><span>物理フラクチュオマティクス論 田中研究室配属</span></li>
+                    <li class="flex flex-col md:flex-row md:items-start border-b border-slate-50 pb-3"><span class="w-40 font-bold text-slate-700 shrink-0 mb-1 md:mb-0">2017/3/24</span><span>東北大学 工学部 情報知能システム総合学科 卒業</span></li>
+                    <li class="flex flex-col md:flex-row md:items-start border-b border-slate-50 pb-3"><span class="w-40 font-bold text-slate-700 shrink-0 mb-1 md:mb-0">2017/4/1</span><span>東北大学 大学院情報科学研究科 応用情報科学専攻 入学 田中・大関研究室所属</span></li>
+                    <li class="flex flex-col md:flex-row md:items-start border-b border-slate-50 pb-3"><span class="w-40 font-bold text-slate-700 shrink-0 mb-1 md:mb-0">2018/9/25</span><span>東北大学 大学院情報科学研究科 応用情報科学専攻 博士課程前期 卒業(早期卒業)</span></li>
+                    <li class="flex flex-col md:flex-row md:items-start border-b border-slate-50 pb-3"><span class="w-40 font-bold text-slate-700 shrink-0 mb-1 md:mb-0">2018/10/1</span><span>東北大学 大学院情報科学研究科 応用情報科学専攻 博士課程後期 入学</span></li>
+                    <li class="flex flex-col md:flex-row md:items-start border-b border-slate-50 pb-3"><span class="w-40 font-bold text-slate-700 shrink-0 mb-1 md:mb-0">2019/4/1 - 2020/4/30</span><span>日本学術振興会 特別研究員(DC1)</span></li>
+                    <li class="flex flex-col md:flex-row md:items-start border-b border-slate-50 pb-3"><span class="w-40 font-bold text-slate-700 shrink-0 mb-1 md:mb-0">2020/5/1 - 2022/3/31</span><span><a href="https://sigmailab.com/" target="_blank" class="text-blue-600 hover:underline">株式会社 Sigma-i</a> Researcher</span></li>
+                    <li class="flex flex-col md:flex-row md:items-start border-b border-slate-50 pb-3"><span class="w-40 font-bold text-slate-700 shrink-0 mb-1 md:mb-0">2021/9/24</span><span>東北大学 大学院情報科学研究科 応用情報科学専攻 博士課程後期 卒業</span></li>
+                    <li class="flex flex-col md:flex-row md:items-start border-b border-slate-50 pb-3"><span class="w-40 font-bold text-slate-700 shrink-0 mb-1 md:mb-0">2021/10/1 - 2022/3/31</span><span>東北大学 大学院情報科学研究科 応用情報科学専攻 情報基礎科学専攻 大関研究室 特任助教(研究)</span></li>
+                    <li class="flex flex-col md:flex-row md:items-start border-b border-slate-50 pb-3"><span class="w-40 font-bold text-slate-700 shrink-0 mb-1 md:mb-0">2022/4/1 - 2024/3/31</span><span>東京工業大学 国際先駆研究機構 量子コンピューティング研究拠点 助教</span></li>
+                    <li class="flex flex-col md:flex-row md:items-start border-b border-slate-50 pb-3"><span class="w-40 font-bold text-slate-700 shrink-0 mb-1 md:mb-0">2024/4/1 - 2024/9/30</span><span>東京工業大学 情報理工学院 数理・計算科学系 高邉研究室 助教</span></li>
+                    <li class="flex flex-col md:flex-row md:items-start"><span class="w-40 font-bold text-slate-700 shrink-0 mb-1 md:mb-0">2024/10/1 - 現在</span><span>東京科学大学 情報理工学院 数理・計算科学系 高邉研究室 助教</span></li>
+                </ul>
+            </div>
 
-						</div>
-					</div>
-			</div>
-			<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-		</body>
+            <!-- 受賞 -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-6 md:p-8 mb-8">
+                <h3 class="text-xl font-bold text-slate-800 mb-6 flex items-center"><i class="fas fa-award text-amber-500 mr-2"></i> 受賞</h3>
+                <ul class="space-y-4 text-sm md:text-base text-slate-600">
+                    <li class="flex flex-col md:flex-row md:items-start border-b border-slate-50 pb-3"><span class="w-40 font-bold text-slate-700 shrink-0 mb-1 md:mb-0">2019年3月27日</span><span>東北大学 総長賞</span></li>
+                    <li class="flex flex-col md:flex-row md:items-start border-b border-slate-50 pb-3"><span class="w-40 font-bold text-slate-700 shrink-0 mb-1 md:mb-0">2019年3月27日</span><span>東北大学 大学院情報科学研究科 研究科長賞</span></li>
+                    <li class="flex flex-col md:flex-row md:items-start border-b border-slate-50 pb-3"><span class="w-40 font-bold text-slate-700 shrink-0 mb-1 md:mb-0">2019年6月</span><span>特に優れた業績による返還免除 for 修士（半額），独立行政法人日本学生支援機構</span></li>
+                    <li class="flex flex-col md:flex-row md:items-start"><span class="w-40 font-bold text-slate-700 shrink-0 mb-1 md:mb-0">2019年6月</span><span>特に優れた業績による返還免除 for 博士（全額），独立行政法人日本学生支援機構</span></li>
+                </ul>
+            </div>
+
+            <!-- 研究助成 -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-6 md:p-8 mb-8">
+                <h3 class="text-xl font-bold text-slate-800 mb-6 flex items-center"><i class="fas fa-hand-holding-usd text-blue-500 mr-2"></i> 研究助成</h3>
+                <ul class="space-y-4 text-sm md:text-base text-slate-600">
+                    <li class="flex flex-col border-b border-slate-50 pb-3">
+                        <span class="font-bold text-slate-700 mb-1">若手研究</span>
+                        <span>研究課題名: "データ駆動型量子インスパイアド最適化アルゴリズムの開発と応用"</span>
+                        <span class="text-sm text-slate-500 mt-1"><i class="far fa-clock mr-1"></i>期間: 2025/4/1 - 2028/3/31</span>
+                    </li>
+                    <li class="flex flex-col border-b border-slate-50 pb-3">
+                        <span class="font-bold text-slate-700 mb-1">情報理工学院若手研究プロジェクト支援</span>
+                        <span>研究課題名: "深層展開を用いた半古典化量子アニーリング"</span>
+                        <span class="text-sm text-slate-500 mt-1"><i class="far fa-clock mr-1"></i>期間: 2024/4/1 - 2025/3/31</span>
+                    </li>
+                    <li class="flex flex-col">
+                        <span class="font-bold text-slate-700 mb-1">日本学術振興会 特別研究員 DC1</span>
+                        <span>研究課題名: "量子揺らぎを伴うサンプリングを駆使した革新的機械学習アルゴリズムの創出"</span>
+                        <span class="text-sm text-slate-500 mt-1"><i class="far fa-clock mr-1"></i>期間: 2019/4/1 - 2020/4/30</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- TA・RA -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-6 md:p-8 mb-8">
+                <h3 class="text-xl font-bold text-slate-800 mb-6 flex items-center"><i class="fas fa-hands-helping text-blue-500 mr-2"></i> TA・RA</h3>
+                <ul class="space-y-4 text-sm md:text-base text-slate-600">
+                    <li class="flex flex-col md:flex-row md:items-start border-b border-slate-50 pb-3"><span class="w-48 font-bold text-slate-700 shrink-0 mb-1 md:mb-0">2017/4/1 -  2019/3/31</span><span>JST-CREST “ビッグデータ時代に向けた革新的アルゴリズム基盤” RA</span></li>
+                    <li class="flex flex-col md:flex-row md:items-start border-b border-slate-50 pb-3"><span class="w-48 font-bold text-slate-700 shrink-0 mb-1 md:mb-0">2017/10/1 - 12/31</span><span>創造工学研修：「機械学習が拓く新時代」（東北大学工学部, 2セメスター）TA</span></li>
+                    <li class="flex flex-col md:flex-row md:items-start"><span class="w-48 font-bold text-slate-700 shrink-0 mb-1 md:mb-0">2018/10/1 - 2019/3/31</span><span>ImPact “ImPact コヒーレントイジングマシンの産業利用に向けたスパース性を用いた最適化手法の開発” RA</span></li>
+                </ul>
+            </div>
+
+            <!-- 教育 -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-6 md:p-8 mb-8">
+                <h3 class="text-xl font-bold text-slate-800 mb-6 flex items-center"><i class="fas fa-chalkboard-teacher text-blue-500 mr-2"></i> 教育</h3>
+                
+                <div class="space-y-6">
+                    <div>
+                        <h4 class="font-bold text-lg text-slate-700 mb-3 border-b-2 border-slate-100 inline-block pb-1">2026年</h4>
+                        <ul class="list-disc list-inside space-y-2 text-sm md:text-base text-slate-600 ml-2">
+                            <li><a href="https://tw.ao.ocha.ac.jp/Syllabus/index_kyoin.cfm?jugyo=26C5164" target="_blank" class="text-blue-600 hover:underline">微分積分学１</a> (お茶の水女子大学, 非常勤講師)</li>
+                            <li><a href="https://tw.ao.ocha.ac.jp/Syllabus/index_kyoin.cfm?jugyo=26C5166" target="_blank" class="text-blue-600 hover:underline">微分積分学2</a> (お茶の水女子大学, 非常勤講師)</li>
+                            <li><a href="https://tw.ao.ocha.ac.jp/Syllabus/index_kyoin.cfm?jugyo=26C5168" target="_blank" class="text-blue-600 hover:underline">微分積分学3</a> (お茶の水女子大学, 非常勤講師)</li>
+                            <li><a href="https://tw.ao.ocha.ac.jp/Syllabus/index_kyoin.cfm?jugyo=26C5170" target="_blank" class="text-blue-600 hover:underline">微分積分学4</a> (お茶の水女子大学, 非常勤講師)</li>
+                            <li><a href="https://tw.ao.ocha.ac.jp/Syllabus/index_kyoin.cfm?jugyo=26C5023" target="_blank" class="text-blue-600 hover:underline">微分積分学演習Ⅰ</a> (お茶の水女子大学, 非常勤講師)</li>
+                            <li><a href="https://tw.ao.ocha.ac.jp/Syllabus/index_kyoin.cfm?jugyo=26C5024" target="_blank" class="text-blue-600 hover:underline">微分積分学演習Ⅱ</a> (お茶の水女子大学, 非常勤講師)</li>
+                            <li><a href="https://syllabus.s.isct.ac.jp/courses/2025/4/1-904-340000-121100-0/202532846" target="_blank" class="text-blue-600 hover:underline">情報理工学フォーラム</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg text-slate-700 mb-3 border-b-2 border-slate-100 inline-block pb-1">2025年</h4>
+                        <ul class="list-disc list-inside space-y-2 text-sm md:text-base text-slate-600 ml-2">
+                            <li><a href="https://syllabus.s.isct.ac.jp/courses/2025/4/0-904-342200-0-0/202502380" target="_blank" class="text-blue-600 hover:underline">確率論基礎</a></li>
+                            <li><a href="https://syllabus.s.isct.ac.jp/courses/2025/4/1-904-340000-121100-0/202532846" target="_blank" class="text-blue-600 hover:underline">情報理工学フォーラム</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg text-slate-700 mb-3 border-b-2 border-slate-100 inline-block pb-1">2024年</h4>
+                        <ul class="list-disc list-inside space-y-2 text-sm md:text-base text-slate-600 ml-2">
+                            <li>情報理工学フォーラム</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- アウトリーチ活動 -->
+            <div class="bg-white rounded-xl shadow-sm border border-slate-100 p-6 md:p-8 mb-12">
+                <h3 class="text-xl font-bold text-slate-800 mb-6 flex items-center"><i class="fas fa-users text-blue-500 mr-2"></i> アウトリーチ活動</h3>
+                <ul class="space-y-4 text-sm md:text-base text-slate-600">
+                    <li class="flex flex-col md:flex-row md:items-start border-b border-slate-50 pb-3"><span class="w-32 font-bold text-slate-700 shrink-0 mb-1 md:mb-0">2016.11/17</span><span>仙台二高OBOGゼミナール 講師</span></li>
+                    <li class="flex flex-col md:flex-row md:items-start border-b border-slate-50 pb-3"><span class="w-32 font-bold text-slate-700 shrink-0 mb-1 md:mb-0">2017.8/8 - 8/9</span><span>青森県立八戸高校特別授業（東北大学） TA</span></li>
+                    <li class="flex flex-col md:flex-row md:items-start border-b border-slate-50 pb-3"><span class="w-32 font-bold text-slate-700 shrink-0 mb-1 md:mb-0">2017.11/9</span><span>仙台二高OBOGゼミナール 講師</span></li>
+                    <li class="flex flex-col md:flex-row md:items-start"><span class="w-32 font-bold text-slate-700 shrink-0 mb-1 md:mb-0">2018.8/8 - 8/9</span><span>青森県立八戸高校特別授業（東北大学） TA</span></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- PUBLICATIONS SECTION -->
+        <section id="publications" class="content-section hidden">
+            <h2 class="text-3xl font-bold text-slate-800 mb-8 pb-2 border-b-2 border-slate-200">研究業績</h2>
+
+            <!-- 学術論文 -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-slate-800 mb-6 flex items-center border-b border-slate-100 pb-3"><i class="fas fa-file-alt text-blue-500 mr-3"></i> 学術論文</h3>
+                <div class="grid grid-cols-1 gap-4">
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                        <h4 class="font-bold text-slate-800 text-lg mb-2 leading-snug">Refined Gradient-Based Temperature Optimization for the Replica-Exchange Monte-Carlo Method</h4>
+                        <p class="text-sm text-slate-600 mb-3">Tastuya Miyata, <span class="font-semibold text-slate-800">Shunta Arai</span> and Satoshi Takabe</p>
+                        <a href="https://arxiv.org/abs/2601.13542" target="_blank" class="text-xs font-medium bg-slate-100 text-slate-700 px-3 py-1.5 rounded-md hover:bg-slate-200 transition-colors inline-flex items-center"><i class="fas fa-external-link-alt mr-1.5"></i> arXiv:2601.13542 (2026)</a>
+                    </div>
+                    
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                        <h4 class="font-bold text-slate-800 text-lg mb-2 leading-snug">Entropy stein variational gradient descent for multimodal probability distributions</h4>
+                        <p class="text-sm text-slate-600 mb-3">Yuya Kawamura, <span class="font-semibold text-slate-800">Shunta Arai</span> and Satoshi Takabe</p>
+                        <span class="text-xs font-medium bg-amber-50 text-amber-700 px-3 py-1.5 rounded-md border border-amber-200 inline-flex items-center"><i class="fas fa-hourglass-half mr-1.5"></i> to be appeared soon</span>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                        <h4 class="font-bold text-slate-800 text-lg mb-2 leading-snug">Quantum annealing enhanced Markov-Chain Monte Carlo</h4>
+                        <p class="text-sm text-slate-600 mb-3"><span class="font-semibold text-slate-800">Shunta Arai</span> and Tadashi Kadowaki</p>
+                        <a href="https://www.nature.com/articles/s41598-025-07293-y" target="_blank" class="text-xs font-medium bg-slate-100 text-slate-700 px-3 py-1.5 rounded-md hover:bg-slate-200 transition-colors inline-flex items-center"><i class="fas fa-external-link-alt mr-1.5"></i> Scientific Reports 15, 21427 (2025)</a>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                        <h4 class="font-bold text-slate-800 text-lg mb-2 leading-snug">Transfer learning for a deep-unfolded combinatorial optimization solver with quantum annealer</h4>
+                        <p class="text-sm text-slate-600 mb-3">Ryo Hagiwara, <span class="font-semibold text-slate-800">Shunta Arai</span> and Satoshi Takabe</p>
+                        <a href="https://journals.aps.org/pra/abstract/10.1103/d3sc-3wkj" target="_blank" class="text-xs font-medium bg-slate-100 text-slate-700 px-3 py-1.5 rounded-md hover:bg-slate-200 transition-colors inline-flex items-center"><i class="fas fa-external-link-alt mr-1.5"></i> Phys. Rev. A 112, 012431 (2025)</a>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                        <h4 class="font-bold text-slate-800 text-lg mb-2 leading-snug">Deep unfolded local quantum annealing</h4>
+                        <p class="text-sm text-slate-600 mb-3"><span class="font-semibold text-slate-800">Shunta Arai</span> and Satoshi Takabe</p>
+                        <a href="https://journals.aps.org/prresearch/abstract/10.1103/PhysRevResearch.6.043325" target="_blank" class="text-xs font-medium bg-slate-100 text-slate-700 px-3 py-1.5 rounded-md hover:bg-slate-200 transition-colors inline-flex items-center"><i class="fas fa-external-link-alt mr-1.5"></i> Phys. Rev. Research 6, 043325 (2024)</a>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                        <h4 class="font-bold text-slate-800 text-lg mb-2 leading-snug">Effectiveness of quantum annealing for continuous-variable optimization</h4>
+                        <p class="text-sm text-slate-600 mb-3"><span class="font-semibold text-slate-800">Shunta Arai</span>, Hiroki Oshiyama and Hidetoshi Nishimori</p>
+                        <a href="https://journals.aps.org/pra/abstract/10.1103/PhysRevA.108.042403" target="_blank" class="text-xs font-medium bg-slate-100 text-slate-700 px-3 py-1.5 rounded-md hover:bg-slate-200 transition-colors inline-flex items-center"><i class="fas fa-external-link-alt mr-1.5"></i> Phys. Rev. A 108, 042403 (2023)</a>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                        <h4 class="font-bold text-slate-800 text-lg mb-2 leading-snug">Teacher-student learning for a binary perceptron with quantum fluctuations</h4>
+                        <p class="text-sm text-slate-600 mb-3"><span class="font-semibold text-slate-800">Shunta Arai</span>, Masayuki Ohzeki and Kazuyuki Tanaka</p>
+                        <a href="https://journals.jps.jp/doi/10.7566/JPSJ.90.074002" target="_blank" class="text-xs font-medium bg-slate-100 text-slate-700 px-3 py-1.5 rounded-md hover:bg-slate-200 transition-colors inline-flex items-center"><i class="fas fa-external-link-alt mr-1.5"></i> Journal of the Physical Society of Japan 90, 074002 (2021)</a>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                        <h4 class="font-bold text-slate-800 text-lg mb-2 leading-snug">Mean field analysis of reverse annealing for code-division multiple-access multiuser detection</h4>
+                        <p class="text-sm text-slate-600 mb-3"><span class="font-semibold text-slate-800">Shunta Arai</span>, Masayuki Ohzeki and Kazuyuki Tanaka</p>
+                        <a href="https://journals.aps.org/prresearch/abstract/10.1103/PhysRevResearch.3.033006" target="_blank" class="text-xs font-medium bg-slate-100 text-slate-700 px-3 py-1.5 rounded-md hover:bg-slate-200 transition-colors inline-flex items-center"><i class="fas fa-external-link-alt mr-1.5"></i> Phys. Rev. Research 3, 033006 (2021)</a>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                        <h4 class="font-bold text-slate-800 text-lg mb-2 leading-snug">Dynamics of Order Parameters of Non-stoquastic Hamiltonians in the Adaptive Quantum Monte Carlo Method</h4>
+                        <p class="text-sm text-slate-600 mb-3"><span class="font-semibold text-slate-800">Shunta Arai</span>, Masayuki Ohzeki and Kazuyuki Tanaka</p>
+                        <a href="https://journals.aps.org/pre/abstract/10.1103/PhysRevE.99.032120" target="_blank" class="text-xs font-medium bg-slate-100 text-slate-700 px-3 py-1.5 rounded-md hover:bg-slate-200 transition-colors inline-flex items-center"><i class="fas fa-external-link-alt mr-1.5"></i> Phys. Rev. E 99, 032120 (2019)</a>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
+                        <h4 class="font-bold text-slate-800 text-lg mb-2 leading-snug">Deep Neural Network Detects Quantum Phase Transition</h4>
+                        <p class="text-sm text-slate-600 mb-3"><span class="font-semibold text-slate-800">Shunta Arai</span>, Masayuki Ohzeki and Kazuyuki Tanaka</p>
+                        <a href="https://journals.jps.jp/doi/abs/10.7566/JPSJ.87.033001" target="_blank" class="text-xs font-medium bg-slate-100 text-slate-700 px-3 py-1.5 rounded-md hover:bg-slate-200 transition-colors inline-flex items-center"><i class="fas fa-external-link-alt mr-1.5"></i> Journal of the Physical Society of Japan 87, 033001 (2018)</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 著書・翻訳・解説 -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-slate-800 mb-6 flex items-center border-b border-slate-100 pb-3"><i class="fas fa-book text-emerald-500 mr-3"></i> 著書・翻訳・解説</h3>
+                <div class="space-y-4">
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col md:flex-row gap-4">
+                        <div class="shrink-0 pt-1">
+                            <span class="text-xs font-bold text-emerald-600 bg-emerald-50 border border-emerald-200 px-2 py-1 rounded">翻訳</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-800 mb-1"><a href="https://www.amazon.co.jp/%E9%87%8F%E5%AD%90%E3%82%B3%E3%83%B3%E3%83%94%E3%83%A5%E3%83%BC%E3%82%BF%E3%81%AB%E3%82%88%E3%82%8B%E6%A9%9F%E6%A2%B0%E5%AD%A6%E7%BF%92-Maria-Schuld/dp/4320124626/" target="_blank" class="hover:text-blue-600 transition-colors">量子コンピュータによる機械学習</a></h4>
+                            <p class="text-sm text-slate-600 mb-1">Maria Schuld and Francesco Petruccione (監訳：大関真之，訳：荒井俊太 他)</p>
+                            <p class="text-xs text-slate-500">共立出版 (2020)</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col md:flex-row gap-4">
+                        <div class="shrink-0 pt-1">
+                            <span class="text-xs font-bold text-indigo-600 bg-indigo-50 border border-indigo-200 px-2 py-1 rounded">分担執筆</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-800 mb-1"><a href="https://link.springer.com/chapter/10.1007/978-981-16-4095-7_13" target="_blank" class="hover:text-blue-600 transition-colors">Mean-field analysis of Sourlas codes with adiabatic reverse annealing</a></h4>
+                            <p class="text-sm text-slate-600 mb-1"><span class="font-semibold text-slate-800">Shunta Arai</span></p>
+                            <p class="text-xs text-slate-500">Sublinear Computation Paradigm, Springer Nature (2021)</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col md:flex-row gap-4">
+                        <div class="shrink-0 pt-1">
+                            <span class="text-xs font-bold text-indigo-600 bg-indigo-50 border border-indigo-200 px-2 py-1 rounded">分担執筆</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-800 mb-1"><a href="https://link.springer.com/chapter/10.1007/978-981-16-4095-7_12" target="_blank" class="hover:text-blue-600 transition-colors">Dynamical analysis of quantum annealing</a></h4>
+                            <p class="text-sm text-slate-600 mb-1">Anthony Coolen, Theodore Nikoletopoulos, <span class="font-semibold text-slate-800">Shunta Arai</span>, and Kazuyuki Tanaka</p>
+                            <p class="text-xs text-slate-500">Sublinear Computation Paradigm, Springer Nature (2021)</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex flex-col md:flex-row gap-4">
+                        <div class="shrink-0 pt-1">
+                            <span class="text-xs font-bold text-amber-600 bg-amber-50 border border-amber-200 px-2 py-1 rounded">解説</span>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-slate-800 mb-1"><a href="https://app.journal.ieice.org/trial/106_1/k106_1_52/index.html" target="_blank" class="hover:text-blue-600 transition-colors">量子アニーリングマシンの活用と今後の展望</a></h4>
+                            <p class="text-sm text-slate-600 mb-1">大関真之, <span class="font-semibold text-slate-800">荒井俊太</span>, 観山正道</p>
+                            <p class="text-xs text-slate-500">電子情報通信学会誌 Vol.106, No.1 (2023)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- International Conferences -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-slate-800 mb-6 flex items-center border-b border-slate-100 pb-3"><i class="fas fa-globe text-indigo-500 mr-3"></i> International Conferences</h3>
+                <div class="space-y-3">
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-indigo-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">Learning-based quantum optimization algorithms for quadratic unconstrained binary optimization problems</h4>
+                        <p class="text-sm text-slate-600 mb-2">Shunta Arai, Ryo Hagiwara and Satoshi Takabe</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span class="font-medium text-slate-700">Poster</span>
+                            <span><a href="https://gakujutsushukai.jp/inqa2024" target="_blank" class="hover:text-blue-600 hover:underline">INQA 2024</a></span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>Oct 17, 2024</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>Tokyo, Japan</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-indigo-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">Deep Unfolded Quantum-Inspired Annealing</h4>
+                        <p class="text-sm text-slate-600 mb-2">Shunta Arai</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span class="font-medium text-slate-700">Poster</span>
+                            <span><a href="https://www.uibk.ac.at/en/congress/inqa2023/" target="_blank" class="hover:text-blue-600 hover:underline">INQA 2023</a></span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>Nov 7, 2023</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>Innsbruck, Austria</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-indigo-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">Continuous-variable Optimization by Quantum Annealing</h4>
+                        <p class="text-sm text-slate-600 mb-2">Shunta Arai, Hiroki Oshiyama and Hidetoshi Nishimori</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span class="font-medium text-slate-700">Talk</span>
+                            <span><a href="https://www.qcomp.irfi.titech.ac.jp/EAJSSP_2023_Program_day1.html" target="_blank" class="hover:text-blue-600 hover:underline">East Asia Joint Seminars On Statistical Physics 2023</a></span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>Oct 11, 2023</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>Yokohama, Japan</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-indigo-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">Benchmark study of continuous function optimization by a quantum annealer</h4>
+                        <p class="text-sm text-slate-600 mb-2">Shunta Arai, Hiroki Oshiyama and Hidetoshi Nishimori</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span class="font-medium text-slate-700">Talk</span>
+                            <span><a href="https://statphys28.org/" target="_blank" class="hover:text-blue-600 hover:underline">Statphys28</a></span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>Aug 11, 2023</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>Tokyo, Japan</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-indigo-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">Quantum annealing for continuous function optimization</h4>
+                        <p class="text-sm text-slate-600 mb-2">Shunta Arai, Hiroki Oshiyama and Hidetoshi Nishimori</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span class="font-medium text-slate-700">Poster</span>
+                            <span><a href="https://cquic.unm.edu/events/2023/06/aqc.html" target="_blank" class="hover:text-blue-600 hover:underline">Adiabatic Quantum Computing Conference 2023</a></span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>Jun 19, 2023</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>Albuquerque, USA</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-indigo-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">Adiabatic reverse annealing does not overcome the hard phase in CDMA multiuser detection</h4>
+                        <p class="text-sm text-slate-600 mb-2">Shunta Arai, Masayuki Ohzeki and Kazuyuki Tanaka</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span class="font-medium text-slate-700">Poster</span>
+                            <span><a href="https://aqc2021.org/poster.html" target="_blank" class="hover:text-blue-600 hover:underline">Adiabatic Quantum Computing Conference 2021</a></span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>Jun 22, 2021</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>Tokyo, Japan (online)</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-indigo-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">Statistical mechanical analysis of reverse annealing for code-division multiple-access multiuser demodulator</h4>
+                        <p class="text-sm text-slate-600 mb-2">Shunta Arai, Masayuki Ohzeki and Kazuyuki Tanaka</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span class="font-medium text-slate-700">Talk</span>
+                            <span><a href="https://www.smapip.is.tohoku.ac.jp/~smapip/2019/spdsa2019/" target="_blank" class="hover:text-blue-600 hover:underline">SPDSA2019</a></span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>Oct 27, 2019</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>Miyagi, Japan</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-indigo-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">Mean-field analysis of quantum error-correcting codes with non-stoquastic Hamiltonian</h4>
+                        <p class="text-sm text-slate-600 mb-2">Shunta Arai, Masayuki Ohzeki and Kazuyuki Tanaka</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span class="font-medium text-slate-700">Poster</span>
+                            <span><a href="https://www.uibk.ac.at/congress/aqc2019/" target="_blank" class="hover:text-blue-600 hover:underline">Adiabatic Quantum Computing Conference</a></span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>Jun 24–28, 2019</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>Innsbruck, Austria</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-indigo-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">Dynamics of order parameters of non-stoquastic Hamiltonian in adaptive quantum Monte Carlo method</h4>
+                        <p class="text-sm text-slate-600 mb-2">Shunta Arai, Masayuki Ohzeki and Kazuyuki Tanaka</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span class="font-medium text-slate-700">Talk</span>
+                            <span><a href="https://www.smapip.is.tohoku.ac.jp/~smapip/2018/spdsa2018/" target="_blank" class="hover:text-blue-600 hover:underline">SPDSA2018</a></span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>Nov 7, 2018</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>Miyagi, Japan</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-indigo-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">Adaptive quantum Monte Carlo method for a class of non-stoquastic Hamiltonian by using D-Wave machine</h4>
+                        <p class="text-sm text-slate-600 mb-2">Shunta Arai, Masayuki Ohzeki and Kazuyuki Tanaka</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span class="font-medium text-slate-700">Poster</span>
+                            <span>Qubits 2018</span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>Sep 24–27, 2018</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>Knoxville, USA</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-indigo-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">Acceleration of adaptive quantum Monte Carlo Sampling for a class of non-stoquastic Hamiltonian by using D-Wave 2000Q</h4>
+                        <p class="text-sm text-slate-600 mb-2">Shunta Arai, Shuntaro Okada, Masayuki Ohzeki and Kazuyuki Tanaka</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span class="font-medium text-slate-700">Poster</span>
+                            <span><a href="https://ti.arc.nasa.gov/events/aqc-18/" target="_blank" class="hover:text-blue-600 hover:underline">Adiabatic Quantum Computing Conference</a></span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>Jun 25–28, 2018</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>Moffett Field, USA</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-indigo-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1"><a href="https://www.youtube.com/watch?v=_ulPzkmsO8A" target="_blank" class="hover:text-blue-600 hover:underline">Deep Neural Network detects quantum phase transition in D-Wave 2000Q</a></h4>
+                        <p class="text-sm text-slate-600 mb-2">Shunta Arai, Masayuki Ohzeki and Kazuyuki Tanaka</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span class="font-medium text-slate-700">Talk</span>
+                            <span><a href="https://ti.arc.nasa.gov/events/aqc-18/" target="_blank" class="hover:text-blue-600 hover:underline">Adiabatic Quantum Computing Conference</a></span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>Jun 25–28, 2018</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>Moffett Field, USA</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-indigo-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">Detection of quantum phase transition in D-Wave 2000Q by deep neural network</h4>
+                        <p class="text-sm text-slate-600 mb-2">Shunta Arai, Masayuki Ohzeki and Kazuyuki Tanaka</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span class="font-medium text-slate-700">Poster</span>
+                            <span><a href="http://www.qutisgroup.com/qml_bqt/" target="_blank" class="hover:text-blue-600 hover:underline">Quantum Machine Learning & Biomimetic Quantum Technologies</a></span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>Mar 19–23, 2018</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>Leioa, Spain</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-indigo-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">Detection of phase transition in transverse-field Ising model by neural network</h4>
+                        <p class="text-sm text-slate-600 mb-2">Shunta Arai, Masayuki Ohzeki, Shun Kataoka and Kazuyuki Tanaka</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span class="font-medium text-slate-700">Poster</span>
+                            <span><a href="https://www.smapip.is.tohoku.ac.jp/~aqc2017/program.html" target="_blank" class="hover:text-blue-600 hover:underline">Adiabatic Quantum Computing Conference</a></span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>Jun 27, 2017</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>Tokyo, Japan</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 国内学会・研究会における発表 -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-slate-800 mb-6 flex items-center border-b border-slate-100 pb-3"><i class="fas fa-microphone-alt text-rose-500 mr-3"></i> 国内学会・研究会における発表</h3>
+                <div class="space-y-3">
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-rose-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">デジタルアナログ量子計算を用いたグローバー適応探索</h4>
+                        <p class="text-sm text-slate-600 mb-2">荒井 俊太, 門脇 正史</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span><a href="https://sites.google.com/view/quantum-annealing-workshop2026/%E7%AC%AC4%E5%9B%9E%E9%87%8量%E5%AD%90%E3%82%A2%E3%83%8B%E3%83%BC%E3%83%AA%E3%83%B3%E3%82%B0%E7%A0%94%E7%A9%B6%E4%BC%9A" target="_blank" class="hover:text-blue-600 hover:underline">量子アニーリング及び関連技術の基礎から社会実装まで</a></span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>2026年2月19日</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>東京科学大学</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-rose-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">Wang-Landau法を用いたグローバー適応探索の効率化</h4>
+                        <p class="text-sm text-slate-600 mb-2">土橋 慶太, 荒井 俊太, 高邉 賢史</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span><a href="https://onsite.gakkai-web.net/jps/jps_search/2025au/data2/html/programkb.html#j16aSL305" target="_blank" class="hover:text-blue-600 hover:underline">日本物理学会 講演番号16aSL305-7</a></span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>2025年9月16日</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>広島大学</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-rose-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">深層展開型組合せ最適化ソルバーの不等式制約への応用</h4>
+                        <p class="text-sm text-slate-600 mb-2">萩原 涼, 荒井 俊太, 高邉 賢史</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span><a href="https://onsite.gakkai-web.net/jps/jps_search/2025au/data2/html/programkb.html#j16aSL305" target="_blank" class="hover:text-blue-600 hover:underline">日本物理学会 講演番号16aSL305-6</a></span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>2025年9月16日</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>広島大学</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-rose-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">サンプリング過程の微分情報に基づくレプリカ交換法の温度セット最適化</h4>
+                        <p class="text-sm text-slate-600 mb-2">宮田 竜弥, 荒井 俊太, 高邉 賢史</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span><a href="https://onsite.gakkai-web.net/jps/jps_search/2025au/data2/html/programkb.html#j16aSL305" target="_blank" class="hover:text-blue-600 hover:underline">日本物理学会 講演番号16aSL305-5</a></span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>2025年9月16日</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>広島大学</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-rose-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">粒子型変分推論を用いたWang-Landau法による周辺尤度比の推定</h4>
+                        <p class="text-sm text-slate-600 mb-2">依田 和城, 西川 宜彦, 荒井 俊太, 高邉 賢史</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span><a href="https://ken.ieice.org/ken/paper/20250606qck4/" target="_blank" class="hover:text-blue-600 hover:underline">信号処理研究会</a></span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>2025年6月6日</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>金沢大学</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-rose-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">深層展開を用いた半古典化量子アニーリングの加速</h4>
+                        <p class="text-sm text-slate-600 mb-2">荒井 俊太, 高邉 賢史</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span><a href="https://onsite.gakkai-web.net/jps/jps_search/2024au/data2/html/program11.html#j16aE311" target="_blank" class="hover:text-blue-600 hover:underline">日本物理学会 講演番号16aE311-2</a></span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>2024年9月16日</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>北海道大学</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-rose-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">量子アニーラーを用いた深層展開型組合せ最適化ソルバーのための転移学習</h4>
+                        <p class="text-sm text-slate-600 mb-2">萩原 涼, 荒井 俊太, 高邉 賢史</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span><a href="https://onsite.gakkai-web.net/jps/jps_search/2024au/data2/html/program11.html#j16aE311" target="_blank" class="hover:text-blue-600 hover:underline">日本物理学会 講演番号16aE311-3</a></span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>2024年9月16日</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>北海道大学</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-rose-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">深層展開の新展開：量子/量子模擬アルゴリズムへの適用</h4>
+                        <p class="text-sm text-slate-600 mb-2">高邉 賢史, 荒井 俊太, 萩原 涼</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span><a href="https://sites.google.com/view/jp22h00514-202409meeting/home" target="_blank" class="hover:text-blue-600 hover:underline">深層展開に基づく信号処理アルゴリズム構築論の深化と展開</a></span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>2024年9月3日</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>広島大学</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-rose-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">転移学習に基づく量子アニーラーを利用した深層展開型最適化ソルバーの提案</h4>
+                        <p class="text-sm text-slate-600 mb-2">萩原 涼, 荒井 俊太, 高邉 賢史</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span><a href="https://ken.ieice.org/ken/paper/202408279cef/" target="_blank" class="hover:text-blue-600 hover:underline">電子情報通信学会 信号処理研究会</a></span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>2024年8月27日</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>福井大学</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-rose-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">量子アニーリングを用いたマルコフ連鎖モンテカルロ法の加速</h4>
+                        <p class="text-sm text-slate-600 mb-2">荒井 俊太, 門脇 正史, 西森 秀稔</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span><a href="https://www.qcomp.irfi.titech.ac.jp/workshop2024_abstract/arai.html" target="_blank" class="hover:text-blue-600 hover:underline">量子アニーリング及び関連技術の基礎から社会実装まで</a></span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>2024年2月19日</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>TKPガーデンシティ田町</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-rose-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">連続変数最適化問題に対する量子・古典最適化アルゴリズムの比較</h4>
+                        <p class="text-sm text-slate-600 mb-2">荒井 俊太, 押山 広樹, 西森 秀稔</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span><a href="https://onsite.gakkai-web.net/jps/jps_search/2023au/data2/html/program11.html#j17aC206" target="_blank" class="hover:text-blue-600 hover:underline">日本物理学会 講演番号17aC206-3</a></span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>2023年9月17日</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>東北大学</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-rose-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">D-Waveマシンによる連続最適化</h4>
+                        <p class="text-sm text-slate-600 mb-2">荒井 俊太</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span><a href="https://www.qcomp.irfi.titech.ac.jp/workshop_abstract/arai.html" target="_blank" class="hover:text-blue-600 hover:underline">量子アニーリング及び関連技術の基礎から社会実装まで</a></span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>2023年2月20日</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>TKPガーデンシティ田町</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-rose-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">量子揺らぎを用いたイジングパーセプトロンの教師-生徒学習</h4>
+                        <p class="text-sm text-slate-600 mb-2">荒井 俊太</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span><a href="https://www.qcomp.irfi.titech.ac.jp/symposium1.html" target="_blank" class="hover:text-blue-600 hover:underline">量子コンピューティング研究拠点 発足記念講演会</a></span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>2022年6月16日</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>オンライン</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-rose-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">量子アニーリングの進展と典型性能解析</h4>
+                        <p class="text-sm text-slate-600 mb-2">荒井 俊太</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span><a href="https://sci22.iscie.or.jp/talks/3086/" target="_blank" class="hover:text-blue-600 hover:underline">第66回システム制御学会 研究発表講演会 講演番号341-3</a></span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>2022年5月20日</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>京都リサーチパーク</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-rose-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">量子揺らぎによるイジングパーセプトロンの学習</h4>
+                        <p class="text-sm text-slate-600 mb-2">荒井 俊太, 大関 真之, 田中 和之</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span><a href="https://w4.gakkai-web.net/jps_search/2020au/data/html/program11.html#j9aL2" target="_blank" class="hover:text-blue-600 hover:underline">日本物理学会 講演番号9aL2-8</a></span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>2020年9月9日</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>熊本大学</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-rose-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">量子揺らぎによる確率的情報処理</h4>
+                        <p class="text-sm text-slate-600 mb-2">荒井 俊太, 大関 真之, 田中 和之</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span class="font-medium text-rose-700 bg-rose-50 px-2 py-0.5 rounded mr-1">招待講演</span>
+                            <span><a href="https://www.ieice-taikai.jp/2020general/jpn/webpro/_html/ess_kikaku.html#ai_4" target="_blank" class="hover:text-blue-600 hover:underline">電子情報通信学会総合大会</a></span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>2020年3月17日</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>広島大学</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-rose-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">リバースアニーリングによるCDMAマルチユーザ検出の統計力学的解析</h4>
+                        <p class="text-sm text-slate-600 mb-2">荒井 俊太, 大関 真之, 田中 和之</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span><a href="https://w4.gakkai-web.net/jps_search/2020sp/data/html/program11.html#j16aK43" target="_blank" class="hover:text-blue-600 hover:underline">日本物理学会 講演番号16aK43-6</a></span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>2020年3月16日</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>名古屋大学</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-rose-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">マスター方程式を用いた非擬似古典確率的なハミルトニアンの秩序変数のダイナミクス</h4>
+                        <p class="text-sm text-slate-600 mb-2">荒井 俊太, 大関 真之, 田中 和之</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span><a href="https://w4.gakkai-web.net/jps_search/2019sp/data/html/program11.html" target="_blank" class="hover:text-blue-600 hover:underline">日本物理学会 講演番号15pG214-1</a></span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>2019年3月15日</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>九州大学</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-rose-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">D-Waveマシンにおける量子相転移の解析</h4>
+                        <p class="text-sm text-slate-600 mb-2">荒井 俊太, 大関 真之, 田中 和之</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span><a href="http://w4.gakkai-web.net/jps_search/2018au/data/html/program11.html" target="_blank" class="hover:text-blue-600 hover:underline">日本物理学会 講演番号10aM203-6</a></span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>2018年9月10日</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>同志社大学</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-rose-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">ニューラルネットワークによる量子相転移の検出</h4>
+                        <p class="text-sm text-slate-600 mb-2">荒井 俊太, 大関 真之, 田中 和之</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span>CREST研究集会</span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>2018年3月28日</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>ホテル三泉閣</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-rose-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">ニューラルネットワークによる様々な相転移の検出</h4>
+                        <p class="text-sm text-slate-600 mb-2">荒井 俊太, 大関 真之, 片岡 駿, 田中 和之</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span><a href="https://bigdata.nii.ac.jp/johokei-winterfesta3/program" target="_blank" class="hover:text-blue-600 hover:underline">情報系 Winter Festa Episode 3</a></span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>2017年12月25日</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>一橋講堂</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-rose-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">ニューラルネットワークによる様々な相転移の検出</h4>
+                        <p class="text-sm text-slate-600 mb-2">荒井 俊太, 大関 真之, 片岡 駿, 田中 和之</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span><a href="http://ibisml.org/ibis2017/discussion2/" target="_blank" class="hover:text-blue-600 hover:underline">第20回情報論的学習理論ワークショップ(IBIS2017)</a></span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>2017年11月10日</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>東京大学</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-rose-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">機械学習と最適化技術が拓く知的情報処理</h4>
+                        <p class="text-sm text-slate-600 mb-2">荒井 俊太, 岡田俊太郎, 高橋茶子, 大関 真之, 片岡 駿, 田中 和之</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span>学術総合センター</span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>2017年10月31日</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-rose-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">ニューラルネットワークによる様々な相転移の検出</h4>
+                        <p class="text-sm text-slate-600 mb-2">荒井 俊太, 大関 真之, 片岡 駿, 田中 和之</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span><a href="http://w4.gakkai-web.net/jps_search/2017au/data/html/program11.html" target="_blank" class="hover:text-blue-600 hover:underline">日本物理学会秋季大会 講演番号22pK10-1</a></span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>2017年9月22日</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>岩手大学</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 外部セミナー -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-slate-800 mb-6 flex items-center border-b border-slate-100 pb-3"><i class="fas fa-chalkboard-teacher text-amber-500 mr-3"></i> 外部セミナー</h3>
+                <div class="space-y-3">
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-amber-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">Acceleration of Markov chain Monte Carlo by quantum annealing</h4>
+                        <p class="text-sm text-slate-600 mb-2">Shunta Arai and Tadashi Kadowaki</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span class="font-medium text-slate-700">Talk</span>
+                            <span><a href="https://www.youtube.com/watch?v=9pxAFIa6Tbo" target="_blank" class="hover:text-blue-600 hover:underline">INQA seminars</a></span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>Mar 18, 2025</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>Online, Japan</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-amber-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">The Potential of Quantum Annealing for Continuous Function Optimization</h4>
+                        <p class="text-sm text-slate-600 mb-2">Shunta Arai, Hiroki Oshiyama and Hidetoshi Nishimori</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span class="font-medium text-slate-700">Talk</span>
+                            <span><a href="https://www.youtube.com/watch?v=8qVEmRZHqq0" target="_blank" class="hover:text-blue-600 hover:underline">INQA seminars</a></span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>Oct 3, 2023</span>
+                            <span><i class="fas fa-map-marker-alt mr-1"></i>Online, Japan</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-amber-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">ARAによるCDMAマルチユーザ検出の典型性能評価</h4>
+                        <p class="text-sm text-slate-600 mb-2">荒井 俊太</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span>東京工業大学 情報理工学院 数理・計算科学系 談話会</span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>2021年11月10日</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-amber-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">Static and dynamical behavior of quantum annealing and its development</h4>
+                        <p class="text-sm text-slate-600 mb-2">Shunta Arai</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span>King's College London</span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>Dec 17, 2019</span>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 hover:border-amber-200 transition-colors">
+                        <h4 class="font-bold text-slate-800 text-base mb-1">Deep Neural Network Detects Quantum Phase Transition</h4>
+                        <p class="text-sm text-slate-600 mb-2">Shunta Arai</p>
+                        <div class="flex flex-wrap items-center text-xs text-slate-500 gap-x-4 gap-y-1">
+                            <span>National Tsing Hua University</span>
+                            <span><i class="far fa-calendar-alt mr-1"></i>Mar 10, 2018</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8 mt-auto">
+        <div class="max-w-4xl mx-auto px-6 md:px-12 text-center text-sm">
+            <p>&copy; 2026 Shunta Arai. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for SPA logic -->
+    <script>
+        function showSection(sectionId, element, isMobile = false) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(sec => {
+                sec.classList.remove('block', 'section-enter');
+                sec.classList.add('hidden');
+            });
+            
+            // Remove active class from all links
+            document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Show selected section
+            const target = document.getElementById(sectionId);
+            target.classList.remove('hidden');
+            // Small timeout to allow reflow for animation
+            setTimeout(() => {
+                target.classList.add('block', 'section-enter');
+            }, 10);
+
+            // Add active class to clicked link
+            if(element) {
+                element.classList.add('active');
+                
+                // If it was clicked from mobile, also update the desktop equivalent
+                if (isMobile) {
+                    const desktopId = 'nav-' + sectionId;
+                    const desktopEl = document.getElementById(desktopId);
+                    if (desktopEl) desktopEl.classList.add('active');
+                } else {
+                    // And vice-versa, though less important since mobile menu is hidden
+                    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+                    // Find the matching mobile link by inspecting its onclick attribute loosely
+                    mobileLinks.forEach(link => {
+                        if (link.getAttribute('onclick').includes(sectionId)) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+            }
+
+            // Close mobile menu if open
+            const mobileMenu = document.getElementById('mobile-menu');
+            if(!mobileMenu.classList.contains('hidden')) {
+                toggleMobileMenu();
+            }
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.querySelector('#mobile-menu-btn i');
+            
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                menu.classList.add('hidden');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+    </script>
+</body>
 </html>
